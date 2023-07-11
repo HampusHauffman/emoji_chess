@@ -1,0 +1,34 @@
+name: emoji_chess
+description: Emoji chess
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0-204.0.dev <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.3.6
+  emoji_picker_flutter: ^1.5.2
+  google_fonts: ^4.0.3
+  firebase_core: ^2.4.1
+  cloud_firestore: ^4.3.1
+  firebase_auth: ^4.2.5
+  google_sign_in: 5.4.4
+  equatable: ^2.0.5
+
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: NotoColorEmoji
+      fonts:
+        - asset: assets/fonts/NotoColorEmoji-Regular.ttf
