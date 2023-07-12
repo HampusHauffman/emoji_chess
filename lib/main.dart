@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'board_provider.dart';
 
-const emojiFont = "NotoColorEmoji";
+const emojiFont = 'NotoColorEmoji';
 
 final boardProvider = StateNotifierProvider<BoardNotifier, Board>((ref) {
   return BoardNotifier.init();
@@ -35,18 +35,18 @@ class MyApp extends StatelessWidget {
           labelMedium: TextStyle(fontFamily: emojiFont, fontSize: 32),
         ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class MyHomePage extends ConsumerWidget {
+  const MyHomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var board = ref.watch(boardProvider);
+
     return AspectRatio(
       aspectRatio: 1,
       child: GridView.builder(
@@ -56,7 +56,7 @@ class MyHomePage extends StatelessWidget {
         ),
         itemBuilder: (BuildContext context, int index) {
           return DragTargetTile(
-            position: index,
+            tile: (piece: board[index], position: index),
           );
         },
       ),

@@ -1,30 +1,18 @@
-typedef Board = List<String?>;
+import 'package:emoji_chess/pieces/piece.dart';
+
+typedef Board = List<Piece?>;
 typedef Position = int;
+typedef Tile = ({Piece? piece, Position position});
 
 extension BoardPosition on Position {
-  int row() {
+  Position row() {
     return this ~/ 8;
   }
 
-  int col() {
+  Position col() {
     return this % 8;
   }
 
   bool isWhiteTile() =>
       ((this ~/ 8) % 2 == 0) ? (this % 2 == 0) : (this % 2 != 0);
-}
-
-extension Movement on Board {
-  bool canPieceMoveFromRowCol(
-      int fromRow, int fromCol, int toRow, int toCol, String piece) {
-    if (fromRow == toRow && fromCol == toCol) {
-      return false; // Cant move a piece to the same spot
-    }
-    return true;
-  }
-
-  bool canPieceMoveFromPos(int fromPosition, int toPosition, String piece) {
-    return canPieceMoveFromRowCol(fromPosition.row(), fromPosition.col(),
-        toPosition.row(), toPosition.col(), piece);
-  }
 }
