@@ -37,3 +37,20 @@ class DraggableTile extends ConsumerWidget {
     );
   }
 }
+
+class EmojiText extends StatelessWidget {
+  const EmojiText({
+    super.key,
+    required this.piece,
+  });
+
+  final String? piece;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      piece != null ? piece! : "",
+      style: Theme.of(context).textTheme.labelMedium,
+    );
+  }
+}

@@ -1,15 +1,3 @@
-final List<String> randEmoji = [
-  '😀',
-  '😂',
-  '😍',
-  '👍',
-  '🐶',
-  '🍕',
-  '🎉',
-  '🌈',
-  '🚀',
-  '👻'
-];
 
 extension Position on int {
   int row() {

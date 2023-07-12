@@ -31,6 +31,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         textTheme: const TextTheme(
+          //set the font family for all the text widgets
+          labelMedium: TextStyle(fontFamily: emojiFont,fontSize: 32),
         ),
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -62,19 +64,3 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class EmojiText extends StatelessWidget {
-  const EmojiText({
-    super.key,
-    required this.piece,
-  });
-
-  final String? piece;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      piece != null ? piece! : "",
-      style: const TextStyle(fontSize: 30, fontFamily: emojiFont),
-    );
-  }
-}
