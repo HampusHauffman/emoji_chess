@@ -1,4 +1,5 @@
 import 'package:emoji_chess/drag_target_tile.dart';
+import 'package:emoji_chess/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,8 +7,7 @@ import 'board_provider.dart';
 
 const emojiFont = "NotoColorEmoji";
 
-final boardProvider =
-    StateNotifierProvider<BoardNotifier, List<String?>>((ref) {
+final boardProvider = StateNotifierProvider<BoardNotifier, Board>((ref) {
   return BoardNotifier.init();
 });
 
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         textTheme: const TextTheme(
           //set the font family for all the text widgets
-          labelMedium: TextStyle(fontFamily: emojiFont,fontSize: 32),
+          labelMedium: TextStyle(fontFamily: emojiFont, fontSize: 32),
         ),
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -63,4 +63,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-

@@ -9,14 +9,14 @@ class DraggableTile extends ConsumerWidget {
     required this.position,
   });
 
-  final int position;
+  final Position position;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final p = ref.watch(boardProvider);
     var draggablePiece = p[position];
 
-    return Draggable<({int position, String? piece})>(
+    return Draggable<({Position position, String? piece})>(
       data: (position: position, piece: draggablePiece),
       onDragStarted: () {},
       onDragEnd: (details) {},

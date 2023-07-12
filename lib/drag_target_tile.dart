@@ -10,14 +10,14 @@ class DragTargetTile extends ConsumerWidget {
     required this.position,
   });
 
-  final int position;
+  final Position position;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final p = ref.watch(boardProvider);
 
     return Material(
-      child: DragTarget<({int position, String? piece})>(
+      child: DragTarget<({Position position, String? piece})>(
         onWillAccept: (data) {
           if (data == null) return false;
           return onWillAccept(data, position, p);
@@ -33,8 +33,8 @@ class DragTargetTile extends ConsumerWidget {
     );
   }
 
-  bool onWillAccept(
-      ({int position, String? piece}) data, int position, List<String?> p) {
+  bool onWillAccept(({Position position, String? piece}) data, Position position,
+      List<String?> p) {
     var piece = data.piece;
     if (piece == null) return false;
     return p.canPieceMoveFromPos(data.position, position, piece);

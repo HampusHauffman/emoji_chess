@@ -1,5 +1,7 @@
+typedef Board = List<String?>;
+typedef Position = int;
 
-extension Position on int {
+extension BoardPosition on Position {
   int row() {
     return this ~/ 8;
   }
@@ -12,7 +14,7 @@ extension Position on int {
       ((this ~/ 8) % 2 == 0) ? (this % 2 == 0) : (this % 2 != 0);
 }
 
-extension Movement on List<String?> {
+extension Movement on Board {
   bool canPieceMoveFromRowCol(
       int fromRow, int fromCol, int toRow, int toCol, String piece) {
     if (fromRow == toRow && fromCol == toCol) {

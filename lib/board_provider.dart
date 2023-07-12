@@ -1,9 +1,10 @@
 import 'dart:core';
 
 import 'package:emoji_chess/const.dart';
+import 'package:emoji_chess/util.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class BoardNotifier extends StateNotifier<List<String?>> {
+class BoardNotifier extends StateNotifier<Board> {
   // init the board with 64 characters from the ascii table
   BoardNotifier.init()
       : super(List.generate(64, (index) => Pieces.values[index % 2].emoji));
