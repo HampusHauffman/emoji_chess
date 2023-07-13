@@ -44,8 +44,6 @@ class MyHomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var board = ref.watch(boardProvider);
-
     return AspectRatio(
       aspectRatio: 1,
       child: GridView.builder(
@@ -55,7 +53,7 @@ class MyHomePage extends ConsumerWidget {
         ),
         itemBuilder: (BuildContext context, int index) {
           return DragTargetTile(
-            tile: board[index],
+            position: index,
           );
         },
       ),

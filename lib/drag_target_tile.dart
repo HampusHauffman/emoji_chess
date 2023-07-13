@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 
 class DragTargetTile extends StatelessWidget {
   const DragTargetTile({
-    required this.tile,
+    required this.position,
   });
 
-  final TilePos tile;
+  final Position position;
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: DragTarget<TilePos>(
+      child: DragTarget<Position>(
         onWillAccept: (data) {
           if (data == null) return false;
           return true;
@@ -20,7 +20,7 @@ class DragTargetTile extends StatelessWidget {
         onAccept: (data) {},
         builder: (BuildContext context, List<Object?> candidateData,
             List<dynamic> rejectedData) {
-          return DraggableTile(tilePos: tile);
+          return DraggableTile(position: position);
         },
       ),
     );
