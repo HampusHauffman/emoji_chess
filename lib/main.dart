@@ -1,5 +1,4 @@
 import 'package:emoji_chess/drag_target_tile.dart';
-import 'package:emoji_chess/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -56,7 +55,7 @@ class MyHomePage extends ConsumerWidget {
         ),
         itemBuilder: (BuildContext context, int index) {
           return DragTargetTile(
-            tile: (piece: board[index], position: index),
+            tile: board[index],
           );
         },
       ),

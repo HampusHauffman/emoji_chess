@@ -1,4 +1,4 @@
-import 'package:emoji_chess/util.dart';
+import 'package:emoji_chess/board_provider.dart';
 
 abstract class Piece {
   final String name;

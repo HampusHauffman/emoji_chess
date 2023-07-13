@@ -1,32 +1,34 @@
-import 'package:emoji_chess/util.dart';
+import 'package:emoji_chess/board_provider.dart';
 import 'package:flutter/material.dart';
 
 class DraggableTile extends StatelessWidget {
   const DraggableTile({
-    required this.tile,
+    required this.tilePos,
   });
 
-  final Tile tile;
+  final TilePos tilePos;
 
   @override
   Widget build(BuildContext context) {
-    return Draggable<Tile>(
-      data: tile,
+    return Draggable<TilePos>(
+      data: tilePos,
       onDragStarted: () {},
       onDragEnd: (details) {},
       onDragCompleted: () {},
       childWhenDragging: Container(
-          color: tile.position.isWhiteTile() ? Colors.white70 : Colors.brown),
+          color:
+              tilePos.position.isWhiteTile() ? Colors.white70 : Colors.brown),
       feedback: Material(
         color: Colors.transparent,
-        child: EmojiText(piece: tile.piece?.emoji),
+        child: EmojiText(piece: tilePos.tile.piece?.emoji),
       ),
       child: Container(
         decoration: BoxDecoration(
-            color: tile.position.isWhiteTile() ? Colors.white70 : Colors.brown,
+            color:
+                tilePos.position.isWhiteTile() ? Colors.white70 : Colors.brown,
             border: Border.all(width: 2, color: Colors.black)),
         alignment: Alignment.center,
-        child: EmojiText(piece: tile.piece?.emoji),
+        child: EmojiText(piece: tilePos.tile.piece?.emoji),
       ),
     );
   }
