@@ -14,7 +14,7 @@ extension BoardPosition on Position {
 }
 
 class Tile {
-  final Piece? piece;
+  Piece? piece;
   Tile({this.piece});
 }
 
@@ -24,14 +24,10 @@ typedef TilePos = ({Tile tile, Position position});
 class Board {
   final List<Tile> _tiles;
 
-  List<TilePos> get tiles => _tiles
-      .mapIndexed((index, element) => (tile: element, position: index))
-      .toList();
-
   Board({required List<Tile> tiles}) : _tiles = tiles;
 
   Board.createBoard()
-      : _tiles = List.generate(64, (index) {
+      : _tiles = List.unmodifiable(List.generate(64, (index) {
           if (index < 16) {
             return Tile(piece: Dog());
           } else if (index > 47) {
@@ -39,9 +35,10 @@ class Board {
           } else {
             return Tile();
           }
-        });
+        }));
 
   TilePos operator [](int index) => (tile: _tiles[index], position: index);
+  void operator []=(int index, Piece piece) => _tiles[index].piece = piece;
 }
 
 class BoardNotifier extends StateNotifier<Board> {
@@ -50,5 +47,11 @@ class BoardNotifier extends StateNotifier<Board> {
 
   TilePos getPiece(int position) {
     return state[position];
+  }
+
+  void move(Position from, Position to) {
+    //implement the logic of moving a piece from one position to another
+    state[to].tile.piece = state[from].tile.piece;
+    state[from].tile.piece = null;
   }
 }
